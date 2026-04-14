@@ -1,15 +1,15 @@
 # Python Package Template
 
-Esta carpeta contiene una plantilla ligera para nuevos proyectos Python.
+A lightweight template for new Python projects.
 
-Usa esta plantilla cuando quieras arrancar rápido con:
+Use this template when you want to get started quickly with:
 - `pyproject.toml`
-- `src/` + paquete inicial
+- `src/` layout + initial package
 - `src/` style checks
-- CI básico con `ruff`, `black` y `mypy`
+- Basic CI with `ruff`, `black`, and `mypy`
 
-Pasos rápidos:
-1. Copia todo el contenido de `template/` a tu nuevo repo.
-2. Renombra `src/package_name` al nombre de tu paquete.
-3. Actualiza `pyproject.toml` con tu nombre, autor y dependencias.
-4. Opcional: elimina `tests/` si no quieres usar tests.
+Quick start:
+1. Copy all contents from `template/` into your new repo.
+2. Rename `src/package_name` to your package name.
+3. Update `pyproject.toml` with your name, author, and dependencies.
+4. Optional: remove `tests/` if you don't need tests.

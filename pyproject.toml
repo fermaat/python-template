@@ -1,13 +1,19 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
 [project]
 name = "package-name"
 version = "0.1.0"
-description = "Minimal Python package template"
+description = "TODO: project description"
 readme = "README.md"
-requires-python = "==3.12.*"
+license = {text = "MIT"}
+authors = [
+    {name = "Fernando Velasco", email = "fermaat.vl@gmail.com"},
+]
+requires-python = ">=3.12"
 dependencies = [
-    "httpx>=0.25",
-    "pyyaml>=6.0.3",
-    "loguru>=0.7",
+    "core-utils @ git+https://github.com/fermaat/core-utils.git",
     "pydantic>=2.0",
     "pydantic-settings>=2.0",
 ]
@@ -15,13 +21,11 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=9.0",
-    "pytest-cov>=4.0",
-    "pytest-asyncio>=0.21",
+    "pytest-cov>=5.0",
+    "pytest-asyncio>=0.24",
     "black>=23.0",
     "ruff>=0.1",
     "mypy>=1.0",
-    "isort>=5.12",
-    "types-PyYAML>=6.0",
 ]
 
 [tool.pdm]
@@ -30,11 +34,14 @@ distribution = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
-addopts = "--strict-markers -v --cov=src --cov-report=term-missing --cov-report=html"
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-q --strict-markers"
 asyncio_mode = "auto"
 markers = [
     "unit: unit tests",
     "integration: integration tests",
+    "slow: slow tests",
 ]
 
 [tool.mypy]
@@ -56,10 +63,6 @@ strict_equality = true
 module = "tests.*"
 disallow_untyped_defs = false
 disallow_incomplete_defs = false
-
-[[tool.mypy.overrides]]
-module = "yaml.*"
-ignore_missing_imports = true
 
 [tool.black]
 line-length = 100
@@ -97,5 +100,6 @@ exclude_lines = [
     "def __repr__",
     "raise NotImplementedError",
     "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
     "@abstractmethod",
 ]

@@ -22,7 +22,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: pdm install
+        run: pdm install -G dev
 
       - name: Lint with ruff
         run: pdm run ruff check src tests
